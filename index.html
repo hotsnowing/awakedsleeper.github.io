@@ -21,6 +21,7 @@
         }
     };
     var game = new Phaser.Game(config);
+    var timeline;
     function preload ()
     {
         this.load.image('logo', 'assets/sprites/test.png');
@@ -45,7 +46,88 @@
 
         emitter.startFollow(character);
 
-        this.tweens.add({
+/*
+        var image = this.add.image(100, 300, 'logo');
+
+        timeline = this.tweens.timeline({
+
+        targets: image,
+        loop: 4,
+
+        tweens: [
+        {
+            x: 700,
+            ease: 'Sine.easeInOut',
+            duration: 2000,
+            yoyo: true
+        },
+        {
+            y: 100,
+            ease: 'Sine.easeOut',
+            duration: 1000,
+            offset: 0
+        },
+        {
+            y: 300,
+            ease: 'Sine.easeIn',
+            duration: 1000
+        },
+        {
+            y: 500,
+            ease: 'Sine.easeOut',
+            duration: 1000
+        },
+        {
+            y: 300,
+            ease: 'Sine.easeIn',
+            duration: 1000
+        }
+        ]
+
+    });
+*/
+
+        var image = this.add.image(100, 300, 'logo');
+
+        timeline = this.tweens.timeline({
+
+            targets: image,
+            ease: 'Sine.easeInOut',
+            duration: 5000,
+            loop: 5,
+
+            tweens: [
+                {
+                    scaleX: 2,
+                    scaleY: 2,
+                    offset: '-=1',
+                },
+                {
+                    scaleX: 1,
+                    scaleY: 1,
+                    offset: '-=1',
+                },
+                /*
+                {
+                    x: 30,
+                    duration: 1000,
+                    yoyo: true,
+                    ease: 'Sine.easeInOut',
+                    offset: 1.0
+                },
+                {
+                    y: 30,
+                    duration: 1000,
+                    yoyo: true,
+                    ease: 'Sine.easeInOut',
+                    offset: 1.0
+                }
+                */
+            ]
+        });
+
+/*
+        var tween = this.tweens.add({
             targets: character,
             scaleX: 1.5,
             scaleY: 1.5,
@@ -55,6 +137,15 @@
             releat: 10,
             yoyo: true
         });
+        this.input.on('pointerdown', function(){
+            if(tween.isPlaying()){
+                tween.pause();
+            }
+            else{
+                tween.resume();
+            }
+        });
+*/
     }
     </script>
 </body>
